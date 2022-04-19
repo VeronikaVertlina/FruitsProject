@@ -1,11 +1,24 @@
 {
   "name": "fruitsproject",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Veronika Vertlina",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VeronikaVertlina/FruitsProject.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/VeronikaVertlina/FruitsProject/issues"
+  },
+  "homepage": "https://github.com/VeronikaVertlina/FruitsProject#readme",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.0"
+  }
 }
