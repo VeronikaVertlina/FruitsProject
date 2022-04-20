@@ -6,8 +6,15 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB");
 //insert some database
 //1. To create a new schema
 const fruitsSchema = new mongoose.Schema({
-  name: String,
-  rating: Number,
+  name: {
+    type: String,
+    required: [true, "Please check your data entry, no name specified!"]
+  },
+  rating: {
+    type: Number,
+    min: 1,
+    max: 10
+  },
   review: String
 });
 
@@ -16,14 +23,14 @@ const Fruit = mongoose.model("Fruit", fruitsSchema);
 
 //3. To create a new fruit document
 const fruit = new Fruit({
-  name: "Apple",
-  rating: 7,
-  review: "Pretty solidas a fruit."
+  name: "Peach",
+  rating: 9,
+  review: "Peaches are so yummy."
 });
 
 //4. To calls the SAVE method in Mongoose to save this
 // - fruit document into a Fruit collection inside a fruitsDB
-// fruit.save();
+fruit.save();
 
 const personSchema = new mongoose.Schema({
   name: String,
@@ -37,24 +44,24 @@ const person = new Person({
   age: 37
 });
 
-person.save();
+//person.save();
 
 // Add new documents
-const kiwi = new Fruit({
-  name: "Kiwi",
-  score: 10,
-  review: "The best fruit."
-});
-const orange = new Fruit({
-  name: "Orange",
-  score: 3,
-  review: "Too sour for me."
-});
-const banana = new Fruit({
-  name: "Banana",
-  score: 3,
-  review: "Weird texture."
-});
+// const kiwi = new Fruit({
+//   name: "Kiwi",
+//   score: 10,
+//   review: "The best fruit."
+// });
+// const orange = new Fruit({
+//   name: "Orange",
+//   score: 3,
+//   review: "Too sour for me."
+// });
+// const banana = new Fruit({
+//   name: "Banana",
+//   score: 3,
+//   review: "Weird texture."
+// });
 
 // Fruit.insertMany([kiwi, orange, banana], function(err){
 //   if(err){
@@ -71,7 +78,7 @@ Fruit.find(function(err, fruits) {
     // mongoose.connection.close();
     setTimeout(function() {
       mongoose.disconnect();
-    }, 1000);
+    }, 500);
 
     fruits.forEach(function(fruit) {
       console.log(fruit.name);
