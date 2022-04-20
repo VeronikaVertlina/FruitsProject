@@ -30,7 +30,7 @@ const fruit = new Fruit({
 
 //4. To calls the SAVE method in Mongoose to save this
 // - fruit document into a Fruit collection inside a fruitsDB
-fruit.save();
+// fruit.save();
 
 const personSchema = new mongoose.Schema({
   name: String,
@@ -44,24 +44,25 @@ const person = new Person({
   age: 37
 });
 
-//person.save();
+
+// person.save();
 
 // Add new documents
-// const kiwi = new Fruit({
-//   name: "Kiwi",
-//   score: 10,
-//   review: "The best fruit."
-// });
-// const orange = new Fruit({
-//   name: "Orange",
-//   score: 3,
-//   review: "Too sour for me."
-// });
-// const banana = new Fruit({
-//   name: "Banana",
-//   score: 3,
-//   review: "Weird texture."
-// });
+const kiwi = new Fruit({
+  name: "Kiwi",
+  score: 10,
+  review: "The best fruit."
+});
+const orange = new Fruit({
+  name: "Orange",
+  score: 3,
+  review: "Too sour for me."
+});
+const banana = new Fruit({
+  name: "Banana",
+  score: 3,
+  review: "Weird texture."
+});
 
 // Fruit.insertMany([kiwi, orange, banana], function(err){
 //   if(err){
@@ -78,7 +79,7 @@ Fruit.find(function(err, fruits) {
     // mongoose.connection.close();
     setTimeout(function() {
       mongoose.disconnect();
-    }, 500);
+    }, 100);
 
     fruits.forEach(function(fruit) {
       console.log(fruit.name);
@@ -87,7 +88,76 @@ Fruit.find(function(err, fruits) {
   }
 });
 
+// Fruit.updateOne({ _id: "626019402ddd8f74167b9e34"}, { name: "Peach"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully updated the document.");
+//   }
+// });
 
+// Fruit.deleteMany({ name: "Peach"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully deleted the document.");
+//   }
+// });
+//
+// Fruit.deleteMany({ rating: 10}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully deleted the document.");
+//   }
+// });
+//
+// Fruit.deleteMany({name: "Apple"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully deleted the document.");
+//   }
+// });
+//
+// Fruit.deleteMany({name: "Kiwi"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully deleted the document.");
+//   }
+// });
+//
+// Fruit.deleteMany({name: "Orange"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully deleted the document.");
+//   }
+// });
+//
+// Fruit.deleteMany({name: "Banana"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully deleted the document.");
+//   }
+// });
+//
+// Person.deleteMany({ name: "John"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     console.log("Succesfully deleted the document from Person model.");
+//   }
+// });
+
+// Find the max balance of all accounts
+// const res = Fruit.aggregate([
+//   { $group: { _id: null, maxBalance: { max: '$balance' }}},
+//   { $project: { _id: 0, maxBalance: 1 }}
+// ]);
+// console.log(res);
 
 // const insertDucuments = function(db, callback) {
 //   // Get the documents collection
